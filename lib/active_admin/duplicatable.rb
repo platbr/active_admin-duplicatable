@@ -78,7 +78,7 @@ module ActiveAdmin
         if duplicate.save
           redirect_to({ action: :edit, id: duplicate.id }, flash: { notice: "#{active_admin_config.resource_label} was successfully duplicated." })
         else
-          redirect_to({ action: :show }, flash: { error: "#{active_admin_config.resource_label} could not be duplicated." })
+          redirect_to({ action: :edit, id: duplicate.id }, flash: { error: "#{active_admin_config.resource_label} could not be duplicated." })
         end
       end
     end
