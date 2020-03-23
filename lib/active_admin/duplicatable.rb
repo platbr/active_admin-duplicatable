@@ -76,9 +76,23 @@ module ActiveAdmin
 
         duplicate = resource.amoeba_dup
         if duplicate.save
-          redirect_to({ action: :edit, id: duplicate.id }, flash: { notice: "#{active_admin_config.resource_label} was successfully duplicated." })
+          redirect_to(
+            { action: :edit, id: duplicate.id },
+            flash: {
+              notice: I18n.t(:successful_save,
+                             default: "%{model} was successfully duplicated.",
+                             scope: [:active_admin, :duplicate],
+                             model: active_admin_config.resource_label)
+            })
         else
-          redirect_to({ action: :edit, id: resource.id }, flash: { error: "#{active_admin_config.resource_label} could not be duplicated." })
+          redirect_to(
+            { action: :edit, id: resource.id },
+            error: {
+              I18n.t(:error_save,
+                             default: "%{model} could not be duplicated.",
+                             scope: [:active_admin, :duplicate],
+                             model: active_admin_config.resource_label)
+            })
         end
       end
     end
