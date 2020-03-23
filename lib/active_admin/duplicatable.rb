@@ -87,8 +87,8 @@ module ActiveAdmin
         else
           redirect_to(
             { action: :edit, id: resource.id },
-            error: {
-              I18n.t(:error_save,
+            flash: {
+              error: I18n.t(:error_save,
                              default: "%{model} could not be duplicated.",
                              scope: [:active_admin, :duplicate],
                              model: active_admin_config.resource_label)
