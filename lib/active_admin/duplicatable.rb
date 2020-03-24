@@ -65,7 +65,17 @@ module ActiveAdmin
     def enable_resource_duplication_via_save
       action_item(*compatible_action_item_parameters) do
         if controller.action_methods.include?('new') && authorized?(ActiveAdmin::Auth::CREATE, active_admin_config.resource_class)
-          link_to(I18n.t(:duplicate_model, default: "Duplicate %{model}", scope: [:active_admin], model: active_admin_config.resource_label), action: :duplicate)
+          link_to(
+            I18n.t(
+              :duplicate_model,
+              default: "Duplicate %{model}",
+              scope: [:active_admin],
+              model: active_admin_config.resource_label),
+            action: :duplicate,
+            confirm: I18n.t(
+              :suplicate_confirm,
+              defalut: 'Are you sure you want to create a copy?',
+              scope: [:active_admin, :duplicate]))
         end
       end
 
