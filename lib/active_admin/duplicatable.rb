@@ -71,11 +71,11 @@ module ActiveAdmin
               default: "Duplicate %{model}",
               scope: [:active_admin],
               model: active_admin_config.resource_label),
-            action: :duplicate,
+            {action: :duplicate},
             data: {
               confirm: I18n.t(
                 :suplicate_confirm,
-                defalut: 'Are you sure you want to create a copy?',
+                default: 'Are you sure you want to create a copy?',
                 scope: [:active_admin, :duplicate])
             })
         end
