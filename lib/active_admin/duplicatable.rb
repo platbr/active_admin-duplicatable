@@ -74,7 +74,7 @@ module ActiveAdmin
             {action: :duplicate},
             data: {
               confirm: I18n.t(
-                :suplicate_confirm,
+                :duplicate_confirm,
                 default: 'Are you sure you want to create a copy?',
                 scope: [:active_admin, :duplicate])
             })
